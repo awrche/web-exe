@@ -1,0 +1,134 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+<style>
+  body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+  }
+
+  .bg-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      overflow: hidden;
+  }
+
+  .bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  /* central white box */
+  .main-card {
+      background-color: rgba(189, 234, 255, 0.7);
+      backdrop-filter: blur(8px);
+      width: 100%;
+      max-width: 1100px;
+      min-height: 85vh;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 20px;
+  }
+
+  .container {  
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(9, 1fr);
+      grid-auto-columns: 1fr;
+      gap: 0px 0px;
+      grid-auto-flow: row;
+      grid-template-areas:
+        "white_t white_t white_t white_t white_t white_t white_t white_t"
+        "white_l white_l title title title title white_r white_r"
+        "white_l white_l title title title title white_r white_r"
+        "white_l white_l white_c white_c white_c white_c white_r white_r"
+        "white_l white_l company_profile company_profile company_profile company_profile white_r white_r"
+        "white_l white_l company_profile company_profile company_profile company_profile white_r white_r"
+        "white_l white_l find_us find_us about about white_r white_r"
+        "white_l white_l find_us find_us about about white_r white_r"
+        "white_l white_l white_b white_b white_b white_b white_r white_r";
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      min-height: 75vh;
+  }
+
+  .white_l { grid-area: white_l; }
+  .white_r { grid-area: white_r; }
+  .title { grid-area: title; }
+  .white_c { grid-area: white_c; }
+  .company_profile { grid-area: company_profile; }
+  .find_us { grid-area: find_us; }
+  .about { grid-area: about; }
+  .white_t { grid-area: white_t; }
+  .white_b { grid-area: white_b; }
+
+  .oswald-bold {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  /* Optional styling to make your links look nice inside the grid */
+  .container a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+  }
+  .container a:hover {
+      color: #007bff;
+  }
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div class="bg-wrapper">
+  <picture>
+    <source media="(max-width: 768px)" srcset="background-mobile.webp">
+    <source media="(max-width: 1024px)" srcset="background-tablet.webp">
+    <img src="background.webp" alt="" class="bg-image">
+  </picture>
+</div>
+
+<div class="main-card">
+  <div class="container">
+    <div class="white_t"></div>
+    <div class="white_l"></div>
+    <div class="white_r"></div>
+    
+    <div class="title">
+      <h1 style= "font-size: 5.5rem; margin: 0;" class="oswald-bold">Webexe</h1><img src="logo.webp">
+    </div>
+    
+    <div class="white_c"></div>
+    
+    <div class="company_profile">
+      <a href="Company_Profile.html">Company Profile</a>
+    </div>
+    
+    <div class="find_us">
+      <a href="#">Find Us</a>
+    </div>
+    
+    <div class="about">
+      <a href="#">About</a>
+    </div>
+    
+    <div class="white_b"></div>
+  </div>
+</div>
