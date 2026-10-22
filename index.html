@@ -7,97 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
-    
-    <style>
-      body {
-          margin: 0;
-          min-height: 100vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          position: relative;
-          overflow-x: hidden;
-      }
-
-      .bg-wrapper {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          z-index: -1;
-          overflow: hidden;
-      }
-
-      .bg-image {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-      }
-
-      /* Central card automatically sizes to fit its contents */
-      .main-card {
-          background-color: rgba(189, 234, 255, 0.7);
-          backdrop-filter: blur(8px);
-          width: 90%;
-          max-width: 800px;
-          padding: 40px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-          border-radius: 12px;
-          box-sizing: border-box;
-      }
-
-      .container {  
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 20px;
-          text-align: center;
-          width: 100%;
-      }
-
-      .title h1 {
-          font-size: 5.5rem;
-          margin: 0;
-      }
-
-      .nav-links {
-          display: flex;
-          gap: 25px;
-          flex-wrap: wrap;
-          justify-content: center;
-          margin-top: 10px;
-      }
-
-      .oswald-bold {
-        font-family: "Oswald", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 700;
-        font-style: normal;
-      }
-
-      .container a {
-          text-decoration: none;
-          color: #333;
-          font-weight: 500;
-          font-size: 1.2rem;
-          transition: color 0.2s ease;
-      }
-      
-      .container a:hover {
-          color: #007bff;
-      }
-
-      /* Responsive font scaling for mobile screens */
-      @media (max-width: 768px) {
-          .title h1 {
-              font-size: 3.5rem;
-          }
-          .main-card {
-              padding: 25px 20px;
-          }
-      }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -111,14 +21,21 @@
 
   <div class="main-card">
     <div class="container">
-      <div class="title">
-        <h1 class="oswald-bold">Webexe</h1><br><h3>Your Future Starts Here</h3>
-      </div>
-      
       <div class="nav-links">
         <a href="Company_Profile.html">Company Profile</a>
         <a href="Find_Us.html">Find Us</a>
         <a href="About.html">About</a>
+      </div>
+
+      <div class="title">
+        <h1 class="oswald-bold">Webexe</h1><br><h3>Your Future Starts Here</h3>
+      </div>
+
+      <div class="page-footer">
+        <div class="footer-links">
+          <a href="Sign_Up.html">Sign Up</a>
+          <a href="Login.html">Login</a>
+        </div>
       </div>
     </div>
   </div>

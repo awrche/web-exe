@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webexe | Sign Up</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-wrapper">
+    <picture>
+      <source media="(max-width: 768px)" srcset="background-mobile.webp">
+      <source media="(max-width: 1024px)" srcset="background-tablet.webp">
+      <img src="background.webp" alt="" class="bg-image">
+    </picture>
+  </div>
+
+  <div class="main-card">
+    <div class="container">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="Company_Profile.html">Company Profile</a>
+        <a href="Find_Us.html">Find Us</a>
+        <a href="About.html">About</a>
+      </div>
+
+      <div class="title">
+        <h1 class="oswald-bold">Sign Up</h1>
+      </div>
+
+      <div class="content">
+        <p>Create your Webexe account and join the next step in your journey.</p>
+      </div>
+
+      <form class="auth-form" novalidate>
+        <div class="form-group">
+          <label for="signup-email">Email</label>
+          <input id="signup-email" type="email" name="email" placeholder="Enter your email">
+        </div>
+
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input id="signup-password" type="password" name="password" placeholder="Create a password">
+        </div>
+
+        <div class="form-group">
+          <label for="signup-code">Email Code</label>
+          <div class="code-row">
+            <input id="signup-code" type="text" name="email-code" placeholder="Enter your email code" class="code-input">
+            <button type="button" class="send-code-btn">Send code</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="page-footer">
+        <div class="footer-links">
+          <a href="Login.html">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const emailInput = document.getElementById('signup-email');
+    const passwordInput = document.getElementById('signup-password');
+    const codeInput = document.getElementById('signup-code');
+    const sendCodeBtn = document.querySelector('.send-code-btn');
+    let generatedCode = '';
+
+    function setGroupState(input, isInvalid) {
+      const group = input.closest('.form-group');
+      if (group) {
+        group.classList.toggle('invalid', isInvalid);
+      }
+      input.setAttribute('aria-invalid', String(isInvalid));
+    }
+
+    function validateEmail() {
+      const value = emailInput.value.trim();
+      const invalid = value.length === 0 || !value.includes('@');
+      setGroupState(emailInput, invalid);
+      return !invalid;
+    }
+
+    function validatePassword() {
+      const value = passwordInput.value;
+      const invalid = value.length < 8;
+      setGroupState(passwordInput, invalid);
+      return !invalid;
+    }
+
+    function validateCode() {
+      const value = codeInput.value.trim();
+      const invalid = value.length === 0 || value !== generatedCode;
+      setGroupState(codeInput, invalid);
+      return !invalid;
+    }
+
+    emailInput.addEventListener('blur', validateEmail);
+    emailInput.addEventListener('input', validateEmail);
+
+    passwordInput.addEventListener('blur', validatePassword);
+    passwordInput.addEventListener('input', validatePassword);
+
+    codeInput.addEventListener('blur', validateCode);
+    codeInput.addEventListener('input', () => {
+      if (codeInput.value.trim() !== '') {
+        validateCode();
+      } else {
+        setGroupState(codeInput, false);
+      }
+    });
+
+    sendCodeBtn.addEventListener('click', () => {
+      generatedCode = String(Math.floor(100000 + Math.random() * 900000));
+      codeInput.value = '';
+      setGroupState(codeInput, false);
+      alert('Your code is: ' + generatedCode);
+    });
+  </script>
+</body>
+</html>
