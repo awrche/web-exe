@@ -130,6 +130,46 @@ h1 {
   font-size: 1.05rem;
 }
 
+.primary-button {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 10px;
+  background: rgba(32, 115, 255, 0.9);
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.primary-button:hover {
+  background: rgba(15, 90, 220, 0.95);
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.job-list {
+  display: grid;
+  gap: 16px;
+  width: min(680px, 100%);
+  text-align: left;
+}
+
+.job-listing {
+  padding: 18px 22px;
+  border-radius: 12px;
+  background: rgba(240, 248, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.job-listing h2 {
+  margin-bottom: 8px;
+  font-size: 1.5rem;
+}
+
+.job-listing p {
+  margin: 6px 0;
+  line-height: 1.6;
+}
+
 .auth-form {
   width: min(420px, 100%);
   display: flex;
