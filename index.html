@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,27 +8,75 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@700&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <header class="site-header">
+    <a class="site-logo" href="index.html" aria-label="Webexe home">
+      <img src="logo.png" alt="">
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <div class="site-nav-row">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="Company_Profile.html">Company Profile</a>
+      </div>
+      <div class="site-nav-row">
+        <a href="Find_Us.html">Find Us</a>
+        <a href="About.html">About</a>
+      </div>
+    </nav>
+    <details class="accessibility-menu">
+      <summary>Accessibility</summary>
+      <div class="accessibility-panel">
+      <div class="appearance-controls" role="group" aria-label="Appearance settings">
+      <div class="bubble-control">
+        <button id="bubbles-toggle" type="button" aria-pressed="false" aria-label="Bubbles: Off"><span>Bubbles</span><span class="appearance-switch" aria-hidden="true"></span></button>
+        <div class="bubble-settings" aria-label="Bubble settings">
+          <label class="bubble-setting">
+            <span class="bubble-setting-heading"><span>Rise speed</span><output id="bubble-speed-value" for="bubble-speed">100%</output></span>
+            <input id="bubble-speed" type="range" min="50" max="200" step="10" value="100">
+          </label>
+          <label class="bubble-setting">
+            <span class="bubble-setting-heading"><span>Spawn rate</span><output id="bubble-rate-value" for="bubble-rate">1.1/s</output></span>
+            <input id="bubble-rate" type="range" min="0.4" max="8" step="0.1" value="1.1">
+          </label>
+          <p class="bubble-settings-hint">Adjust how quickly bubbles rise and appear.</p>
+        </div>
+      </div>
+      <div class="night-control">
+        <button id="dark-mode-toggle" type="button" aria-pressed="false" aria-label="Dark mode: Off"><span>Dark mode</span><span class="appearance-switch" aria-hidden="true"></span></button>
+        <div class="night-settings" role="group" aria-label="Additional appearance options">
+          <button id="night-mode-toggle" type="button" aria-pressed="false" aria-label="Night mode: Off"><span>Night mode</span><span class="appearance-switch" aria-hidden="true"></span></button>
+        </div>
+      </div>
+      <div class="music-control">
+        <button id="music-toggle" type="button" aria-pressed="false" aria-label="Background music: Off"><span>Music</span><span class="appearance-switch" aria-hidden="true"></span></button>
+        <div class="music-settings" role="group" aria-label="Music controls">
+          <label class="music-volume-setting">
+            <span class="music-volume-heading"><span>Volume</span><output id="music-volume-value" for="music-volume">100%</output></span>
+            <input id="music-volume" type="range" min="0" max="100" step="1" value="100">
+          </label>
+          <button id="music-mute-toggle" class="music-mute-toggle" type="button" aria-pressed="false" aria-label="Mute music">Mute</button>
+          <span id="music-status" class="music-status" aria-live="polite"></span>
+        </div>
+      </div>
+      </div>
+    </details>
+  </header>
+  <script src="site.js"></script>
   <div class="bg-wrapper">
     <picture>
       <source media="(max-width: 768px)" srcset="background-mobile.webp">
       <source media="(max-width: 1024px)" srcset="background-tablet.webp">
-      <img src="background.webp" alt="" class="bg-image">
+      <img src="background.webp" alt="" class="bg-image" fetchpriority="high">
     </picture>
   </div>
 
   <div class="main-card">
     <div class="container">
-      <div class="nav-links">
-        <a href="Company_Profile.html">Company Profile</a>
-        <a href="Find_Us.html">Find Us</a>
-        <a href="About.html">About</a>
-      </div>
-
       <div class="title">
         <h1 class="oswald-bold">Webexe</h1><br><h3>Your Future Starts Here</h3>
       </div>
