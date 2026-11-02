@@ -16,11 +16,11 @@
       <img src="logo.png" alt="">
     </a>
     <nav class="site-nav" aria-label="Main navigation">
-      <div class="site-nav-row">
+      <div class="nav-row">
         <a href="index.html">Home</a>
         <a href="Company_Profile.html">Company Profile</a>
       </div>
-      <div class="site-nav-row">
+      <div class="nav-row">
         <a href="Find_Us.html">Find Us</a>
         <a href="About.html">About</a>
       </div>
@@ -33,11 +33,11 @@
         <button id="bubbles-toggle" type="button" aria-pressed="false" aria-label="Bubbles: Off"><span>Bubbles</span><span class="appearance-switch" aria-hidden="true"></span></button>
         <div class="bubble-settings" aria-label="Bubble settings">
           <label class="bubble-setting">
-            <span class="bubble-setting-heading"><span>Rise speed</span><output id="bubble-speed-value" for="bubble-speed">100%</output></span>
+            <span class="bubble-setting-row"><span>Rise speed</span><output id="bubble-speed-value" for="bubble-speed">100%</output></span>
             <input id="bubble-speed" type="range" min="50" max="200" step="10" value="100">
           </label>
           <label class="bubble-setting">
-            <span class="bubble-setting-heading"><span>Spawn rate</span><output id="bubble-rate-value" for="bubble-rate">1.1/s</output></span>
+            <span class="bubble-setting-row"><span>Spawn rate</span><output id="bubble-rate-value" for="bubble-rate">1.1/s</output></span>
             <input id="bubble-rate" type="range" min="0.4" max="8" step="0.1" value="1.1">
           </label>
           <p class="bubble-settings-hint">Adjust how quickly bubbles rise and appear.</p>
@@ -53,7 +53,7 @@
         <button id="music-toggle" type="button" aria-pressed="false" aria-label="Background music: Off"><span>Music</span><span class="appearance-switch" aria-hidden="true"></span></button>
         <div class="music-settings" role="group" aria-label="Music controls">
           <label class="music-volume-setting">
-            <span class="music-volume-heading"><span>Volume</span><output id="music-volume-value" for="music-volume">100%</output></span>
+            <span class="music-volume-row"><span>Volume</span><output id="music-volume-value" for="music-volume">100%</output></span>
             <input id="music-volume" type="range" min="0" max="100" step="1" value="100">
           </label>
           <button id="music-mute-toggle" class="music-mute-toggle" type="button" aria-pressed="false" aria-label="Mute music">Mute</button>
@@ -72,31 +72,33 @@
     </picture>
   </div>
 
-  <div class="main-card">
-    <div class="container">
-      <div class="title">
+  <div class="panel">
+    <div class="wrap">
+      <div class="head">
         <h1 class="oswald-bold">Login</h1>
       </div>
 
-      <div class="content">
+      <div class="text">
         <p>Welcome back. Sign in to continue where you left off.</p>
       </div>
 
-      <form class="auth-form" novalidate>
-        <div class="form-group">
+      <form class="form" novalidate>
+        <div class="field">
           <label for="login-email">Email</label>
           <input id="login-email" type="email" name="email" placeholder="Enter your email">
+          <span class="error-message" aria-live="polite"></span>
         </div>
 
-        <div class="form-group">
+        <div class="field">
           <label for="login-password">Password</label>
           <input id="login-password" type="password" name="password" placeholder="Enter your password">
+          <span class="error-message" aria-live="polite"></span>
         </div>
       </form>
 
-      <div class="page-footer">
-        <div class="footer-links">
-          <a href="Sign_Up.html">Sign Up</a>
+      <div class="foot">
+        <div class="links">
+          <a href="Sign_Up.html">Login</a>
         </div>
       </div>
     </div>
@@ -106,10 +108,14 @@
     const loginEmailInput = document.getElementById('login-email');
     const loginPasswordInput = document.getElementById('login-password');
 
-    function setGroupState(input, isInvalid) {
-      const group = input.closest('.form-group');
+    function setGroupState(input, isInvalid, message) {
+      const group = input.closest('.field');
+      const errorMessage = group ? group.querySelector('.error-message') : null;
       if (group) {
         group.classList.toggle('invalid', isInvalid);
+      }
+      if (errorMessage) {
+        errorMessage.textContent = isInvalid ? message : '';
       }
       input.setAttribute('aria-invalid', String(isInvalid));
     }
@@ -117,13 +123,13 @@
     function validateLoginEmail() {
       const value = loginEmailInput.value.trim();
       const invalid = value.length === 0 || !value.includes('@');
-      setGroupState(loginEmailInput, invalid);
+      setGroupState(loginEmailInput, invalid, 'Please enter a valid email address.');
     }
 
     function validateLoginPassword() {
       const value = loginPasswordInput.value;
       const invalid = value.length < 8;
-      setGroupState(loginPasswordInput, invalid);
+      setGroupState(loginPasswordInput, invalid, 'Please enter a valid password.');
     }
 
     loginEmailInput.addEventListener('blur', validateLoginEmail);

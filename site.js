@@ -26,8 +26,38 @@ if (appearanceControls) {
   let bubbleTimer = null;
   let activeBubbles = [];
   let preferences = {};
-  const introAudio = new Audio('sound/intro.ogg');
-  const loopAudio = new Audio('sound/loop.ogg');
+
+  function loadAudioSource(audio, sourcePath) {
+    const sourceUrl = new URL(sourcePath, window.location.href).href;
+
+    if (location.protocol !== 'file:') {
+      audio.src = sourceUrl;
+      audio.load();
+      return;
+    }
+
+    fetch(sourceUrl)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Audio source request failed: ${response.status}`);
+        }
+        return response.blob();
+      })
+      .then((blob) => {
+        const blobUrl = URL.createObjectURL(blob);
+        audio.src = blobUrl;
+        audio.load();
+      })
+      .catch(() => {
+        audio.src = sourceUrl;
+        audio.load();
+      });
+  }
+
+  const introAudio = new Audio();
+  const loopAudio = new Audio();
+  loadAudioSource(introAudio, 'sound/intro.ogg');
+  loadAudioSource(loopAudio, 'sound/loop.ogg');
   let musicEnabled = false;
   let musicRequest = 0;
   let musicPlaybackBlocked = false;
@@ -112,10 +142,8 @@ if (appearanceControls) {
 
   function showMusicError(error) {
     console.error('Unable to play background music.', error);
-    if (location.protocol === 'file:' && error.name === 'NotSupportedError') {
-      musicStatus.textContent = 'Music needs the site to be opened through a web server, such as VS Code Live Server.';
-    } else if (error.name === 'NotAllowedError') {
-      musicStatus.textContent = 'Your browser blocked automatic playback. Select Music to resume.';
+    if (error.name === 'NotAllowedError') {
+      musicStatus.textContent = 'Your browser blocked automatic playback. Select Music to allow the audio to start.';
     } else {
       musicStatus.textContent = 'Music could not play. Check that the audio files are available.';
     }

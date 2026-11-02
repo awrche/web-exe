@@ -16,11 +16,11 @@
       <img src="logo.png" alt="">
     </a>
     <nav class="site-nav" aria-label="Main navigation">
-      <div class="site-nav-row">
+      <div class="nav-row">
         <a href="index.html">Home</a>
         <a href="Company_Profile.html" aria-current="page">Company Profile</a>
       </div>
-      <div class="site-nav-row">
+      <div class="nav-row">
         <a href="Find_Us.html">Find Us</a>
         <a href="About.html">About</a>
       </div>
@@ -33,11 +33,11 @@
         <button id="bubbles-toggle" type="button" aria-pressed="false" aria-label="Bubbles: Off"><span>Bubbles</span><span class="appearance-switch" aria-hidden="true"></span></button>
         <div class="bubble-settings" aria-label="Bubble settings">
           <label class="bubble-setting">
-            <span class="bubble-setting-heading"><span>Rise speed</span><output id="bubble-speed-value" for="bubble-speed">100%</output></span>
+            <span class="bubble-setting-row"><span>Rise speed</span><output id="bubble-speed-value" for="bubble-speed">100%</output></span>
             <input id="bubble-speed" type="range" min="50" max="200" step="10" value="100">
           </label>
           <label class="bubble-setting">
-            <span class="bubble-setting-heading"><span>Spawn rate</span><output id="bubble-rate-value" for="bubble-rate">1.1/s</output></span>
+            <span class="bubble-setting-row"><span>Spawn rate</span><output id="bubble-rate-value" for="bubble-rate">1.1/s</output></span>
             <input id="bubble-rate" type="range" min="0.4" max="8" step="0.1" value="1.1">
           </label>
           <p class="bubble-settings-hint">Adjust how quickly bubbles rise and appear.</p>
@@ -53,7 +53,7 @@
         <button id="music-toggle" type="button" aria-pressed="false" aria-label="Background music: Off"><span>Music</span><span class="appearance-switch" aria-hidden="true"></span></button>
         <div class="music-settings" role="group" aria-label="Music controls">
           <label class="music-volume-setting">
-            <span class="music-volume-heading"><span>Volume</span><output id="music-volume-value" for="music-volume">100%</output></span>
+            <span class="music-volume-row"><span>Volume</span><output id="music-volume-value" for="music-volume">100%</output></span>
             <input id="music-volume" type="range" min="0" max="100" step="1" value="100">
           </label>
           <button id="music-mute-toggle" class="music-mute-toggle" type="button" aria-pressed="false" aria-label="Mute music">Mute</button>
@@ -72,49 +72,47 @@
     </picture>
   </div>
 
-  <div class="main-card">
-    <div class="container">
+  <div class="panel">
+    <div class="wrap">
       <h1>Company Profile</h1>
 
-      <div class="content">
+      <div class="text">
         <p>Webexe is a modern digital company focused on helping people build brighter futures through technology, creativity, and meaningful connections.</p>
         <p>Our mission is to create user-friendly experiences that make information, services, and innovation accessible to everyone.</p>
         <p>We combine practical strategy with a forward-thinking mindset to deliver solutions that grow with our clients and communities.</p>
       </div>
 
-<<<<<<< HEAD
-      <section class="company-profiles" aria-labelledby="teams-heading">
+      <section class="team-wrap" aria-labelledby="teams-heading">
         <h2 id="teams-heading">Our Teams</h2>
-        <div class="profile-grid">
-          <article class="profile-card">
+        <div class="grid">
+          <article class="card">
             <h3>Webexe Digital</h3>
             <p>Builds accessible websites and digital services that make everyday tasks easier.</p>
           </article>
-          <article class="profile-card">
+          <article class="card">
             <h3>Webexe Creative</h3>
             <p>Turns early ideas into thoughtful visual identities, content, and user experiences.</p>
           </article>
-          <article class="profile-card">
+          <article class="card">
             <h3>Webexe Community</h3>
             <p>Connects people with learning, collaboration, and opportunities to grow together.</p>
           </article>
-          <article class="profile-card">
+          <article class="card">
             <h3>Webexe Engineering</h3>
             <p>Creates reliable, secure technology that brings our ideas and digital products to life.</p>
           </article>
-          <article class="profile-card">
+          <article class="card">
             <h3>Webexe Customer Success</h3>
             <p>Helps clients get the most from our services with practical guidance and ongoing support.</p>
           </article>
-          <article class="profile-card">
+          <article class="card">
             <h3>Webexe Research &amp; Innovation</h3>
             <p>Explores emerging ideas and turns useful insights into better experiences for everyone.</p>
           </article>
         </div>
       </section>
-=======
-      <a class="primary-button" href="Web_Development_Jobs.html">Explore Web Development Jobs</a>
->>>>>>> 2f071abd6a3581419d9373bfdd6cb36c0f28d1e5
+
+      <a class="btn" href="Web_Development_Jobs.html">Explore Web Development Jobs</a>
     </div>
   </div>
 </body>
