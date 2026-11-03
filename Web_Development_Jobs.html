@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webexe | Web Development Jobs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-logo" href="index.html" aria-label="Webexe home">
+      <img src="logo.png" alt="">
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <div class="nav-row">
+        <a href="index.html">Home</a>
+        <a href="Company_Profile.html">Company Profile</a>
+      </div>
+      <div class="nav-row">
+        <a href="Find_Us.html">Find Us</a>
+        <a href="About.html">About</a>
+      </div>
+    </nav>
+    <details class="accessibility-menu">
+      <summary>Accessibility</summary>
+      <div class="accessibility-panel">
+        <div class="appearance-controls" role="group" aria-label="Appearance settings">
+          <div class="bubble-control">
+            <button id="bubbles-toggle" type="button" aria-pressed="false" aria-label="Bubbles: Off"><span>Bubbles</span><span class="appearance-switch" aria-hidden="true"></span></button>
+            <div class="bubble-settings" aria-label="Bubble settings">
+              <label class="bubble-setting">
+                <span class="bubble-setting-row"><span>Rise speed</span><output id="bubble-speed-value" for="bubble-speed">100%</output></span>
+                <input id="bubble-speed" type="range" min="50" max="200" step="10" value="100">
+              </label>
+              <label class="bubble-setting">
+                <span class="bubble-setting-row"><span>Spawn rate</span><output id="bubble-rate-value" for="bubble-rate">1.1/s</output></span>
+                <input id="bubble-rate" type="range" min="0.4" max="8" step="0.1" value="1.1">
+              </label>
+              <p class="bubble-settings-hint">Adjust how quickly bubbles rise and appear.</p>
+            </div>
+          </div>
+          <div class="night-control">
+            <button id="dark-mode-toggle" type="button" aria-pressed="false" aria-label="Dark mode: Off"><span>Dark mode</span><span class="appearance-switch" aria-hidden="true"></span></button>
+            <div class="night-settings" role="group" aria-label="Additional appearance options">
+              <button id="night-mode-toggle" type="button" aria-pressed="false" aria-label="Night mode: Off"><span>Night mode</span><span class="appearance-switch" aria-hidden="true"></span></button>
+            </div>
+          </div>
+          <div class="music-control">
+            <button id="music-toggle" type="button" aria-pressed="false" aria-label="Background music: Off"><span>Music</span><span class="appearance-switch" aria-hidden="true"></span></button>
+            <div class="music-settings" role="group" aria-label="Music controls">
+              <label class="music-volume-setting">
+                <span class="music-volume-row"><span>Volume</span><output id="music-volume-value" for="music-volume">100%</output></span>
+                <input id="music-volume" type="range" min="0" max="100" step="1" value="100">
+              </label>
+              <button id="music-mute-toggle" class="music-mute-toggle" type="button" aria-pressed="false" aria-label="Mute music">Mute</button>
+              <span id="music-status" class="music-status" aria-live="polite"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+  </header>
+
+  <div class="bg-wrapper">
+    <picture>
+      <source media="(max-width: 768px)" srcset="background-mobile.webp">
+      <source media="(max-width: 1024px)" srcset="background-tablet.webp">
+      <img src="background.webp" alt="" class="bg-image">
+    </picture>
+  </div>
+
+  <div class="panel">
+    <div class="wrap">
+
+      <h1>Web Development Jobs</h1>
+      <p class="text">Explore opportunities to build useful, user-friendly digital experiences with Webexe.</p>
+
+      <section class="list" aria-label="Open web development positions">
+        <article class="item">
+          <h2>Web QA / Test Automation Engineer</h2>
+          <p>Ensure web application quality, performance, and functionality across cross-browser and cross-device environments.</p>
+          <p>Focus: Automated testing frameworks (Cypress, Playwright, Selenium), End-to-End (E2E) testing, Integration testing</p>
+          <a href="mailto:info@webexe.com?subject=Web QA / Test Automation Engineer">Apply Here</a>
+        </article>
+
+        <article class="item">
+          <h2>Mobile Web / PWA Developer</h2>
+          <p>Craft progressive web applications and mobile-first web experiences that offer native-like performance and offline capabilities.</p>
+          <p>Focus: Progressive Web Apps (PWAs), Web Manifests, Service Workers, Responsive Web Design</p>
+          <a href="mailto:info@webexe.com?subject=Mobile Web / PWA Developer">Apply Here</a>
+        </article>
+
+        <article class="item">
+          <h2>Headless / Jamstack Developer</h2>
+          <p>Build ultra-fast, decoupled web architectures by pairing modern frontend frameworks with headless backends and APIs.</p>
+          <p>Focus: Next.js, Nuxt, Astro, GraphQL, Headless CMS platforms (Sanity, Strapi, Contentful)</p>
+          <a href="mailto:info@webexe.com?subject=Headless / Jamstack Developer">Apply Here</a>
+        </article>
+
+        <article class="item">
+          <h2>Web Accessibility (a11y) Specialist</h2>
+          <p>Audit and refactor web applications to guarantee compliance with global accessibility standards so digital products are usable by everyone.</p>
+          <p>Focus: WCAG 2.2 standards, ARIA specifications, Screen readers (NVDA, VoiceOver), Automated auditing tools (Axe, Lighthouse)</p>
+          <a href="mailto:info@webexe.com?subject=Web Accessibility (a11y) Specialist">Apply Here</a>
+        </article>
+
+        <article class="item">
+          <h2>SEO & Technical Web Specialist</h2>
+          <p>Optimize web application architecture, rendering pipelines, and structured data to maximize search engine indexing and organic visibility.</p>
+          <p>Focus: Technical SEO, Schema.org markup, Server-Side Rendering (SSR), Core Web Vitals audit, URL Routing</p>
+          <a href="mailto:info@webexe.com?subject=SEO & Technical Web Specialist">Apply Here</a>
+        </article>
+
+        <article class="item">
+          <h2>API / Integration Developer</h2>
+          <p>Architect, secure, and maintain third-party integrations, webhook systems, and public web service ecosystems.</p>
+          <p>Focus: RESTful APIs, GraphQL, OpenAPI/Swagger specifications, OAuth2, Webhooks</p>
+          <a href="mailto:info@webexe.com?subject=API / Integration Developer">Apply Here</a>
+        </article>
+
+        <article class="item">
+          <h2>DevOps / Web Site Reliability Engineer (SRE)</h2>
+          <p>Automate deployments, manage web infrastructure, and ensure high availability and site reliability.</p>
+          <p>Focus: CI/CD pipelines, Docker, Kubernetes, Cloud Infrastructure (AWS/GCP/Azure), Monitoring</p>
+          <a href="mailto:info@webexe.com?subject=DevOps / Web Site Reliability Engineer (SRE)">Apply Here</a>
+        </article>
+
+        <article class="item">
+          <h2>UI/UX Developer</h2>
+          <p>Bridge design and technical implementation by creating intuitive user experiences and high-fidelity interfaces.</p>
+          <p>Focus: Design systems, Prototyping (Figma/Adobe XD), Design-to-code translation, Accessibility (WCAG)</p>
+          <a href="mailto:info@webexe.com?subject=UI/UX Developer">Apply Here</a>
+        </article>
+
+        <article class="item">
+          <h2>CMS / WordPress Developer</h2>
+          <p>Build, customize, and maintain content management systems, plugins, and custom themes for dynamic web publishing.</p>
+          <p>Focus: PHP, WordPress/Drupal/Shopify, Headless CMS, Theme Development</p>
+          <a href="mailto:info@webexe.com?subject=CMS / WordPress Developer">Apply Here</a>
+        </article>
+
+        <article class="item">
+          <h2>Web Security Engineer</h2>
+          <p>Protect web applications and infrastructure from vulnerabilities, cyber threats, and security breaches.</p>
+          <p>Focus: Web Application Security (OWASP Top 10), Cryptography, Penetration Testing, Secure Coding Standards</p>
+          <a href="mailto:info@webexe.com?subject=Web Security Engineer">Apply Here</a>
+        </article>
+
+        <article class="item">
+          <h2>Web Performance Specialist / Optimization Engineer</h2>
+          <p>Analyze and optimize page speed, asset delivery, and overall web performance for maximum conversion and search visibility.</p>
+          <p>Focus: Core Web Vitals, Web Performance Optimization (WPO), Caching strategies, Asset Compression</p>
+          <a href="mailto:info@webexe.com?subject=Web Performance Specialist">Apply Here</a>
+        </article>
+
+        <article class="item">
+          <h2>E-commerce Web Developer</h2>
+          <p>Architect and scale online stores with seamless payment gateway integrations, catalog management, and checkout flows.</p>
+          <p>Focus: Shopify (Liquid), Magento, WooCommerce, Payment APIs (Stripe/PayPal), Transaction Security</p>
+          <a href="mailto:info@webexe.com?subject=E-commerce Web Developer">Apply Here</a>
+        </article>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
