@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webexe | About</title>
+  <title>About Webexe | Digital Company Overview</title>
+  <meta name="description" content="Learn about Webexe, our mission, how we work, and the values that guide our digital design and technology services.">
+  <meta name="keywords" content="Webexe about, digital company, mission, values, technology, design, accessibility, future focused">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="About Webexe">
+  <meta property="og:description" content="Find out how Webexe creates meaningful digital experiences with thoughtful design and practical technology.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="logo.png">
+  <meta name="theme-color" content="#0f172a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -13,7 +21,7 @@
 <body>
   <header class="site-header">
     <a class="site-logo" href="index.html" aria-label="Webexe home">
-      <img src="logo.png" alt="">
+      <img src="logo.png" alt="Webexe logo">
     </a>
     <nav class="site-nav" aria-label="Main navigation">
       <div class="nav-row">
@@ -28,43 +36,45 @@
     <details class="accessibility-menu">
       <summary>Accessibility</summary>
       <div class="accessibility-panel">
-      <div class="appearance-controls" role="group" aria-label="Appearance settings">
-      <div class="bubble-control">
-        <button id="bubbles-toggle" type="button" aria-pressed="false" aria-label="Bubbles: Off"><span>Bubbles</span><span class="appearance-switch" aria-hidden="true"></span></button>
-        <div class="bubble-settings" aria-label="Bubble settings">
-          <label class="bubble-setting">
-            <span class="bubble-setting-row"><span>Rise speed</span><output id="bubble-speed-value" for="bubble-speed">100%</output></span>
-            <input id="bubble-speed" type="range" min="50" max="200" step="10" value="100">
-          </label>
-          <label class="bubble-setting">
-            <span class="bubble-setting-row"><span>Spawn rate</span><output id="bubble-rate-value" for="bubble-rate">1.1/s</output></span>
-            <input id="bubble-rate" type="range" min="0.4" max="8" step="0.1" value="1.1">
-          </label>
-          <p class="bubble-settings-hint">Adjust how quickly bubbles rise and appear.</p>
+        <div class="appearance-controls" role="group" aria-label="Appearance settings">
+          <div class="bubble-control">
+            <button id="bubbles-toggle" type="button" aria-pressed="false" aria-label="Bubbles: Off"><span>Bubbles</span><span class="appearance-switch" aria-hidden="true"></span></button>
+            <div class="bubble-settings" aria-label="Bubble settings">
+              <label class="bubble-setting">
+                <span class="bubble-setting-row"><span>Rise speed</span><output id="bubble-speed-value" for="bubble-speed">100%</output></span>
+                <input id="bubble-speed" type="range" min="50" max="200" step="10" value="100">
+              </label>
+              <label class="bubble-setting">
+                <span class="bubble-setting-row"><span>Spawn rate</span><output id="bubble-rate-value" for="bubble-rate">1.1/s</output></span>
+                <input id="bubble-rate" type="range" min="0.4" max="8" step="0.1" value="1.1">
+              </label>
+              <p class="bubble-settings-hint">Adjust how quickly bubbles rise and appear.</p>
+            </div>
+          </div>
+          <div class="night-control">
+            <button id="dark-mode-toggle" type="button" aria-pressed="false" aria-label="Dark mode: Off"><span>Dark mode</span><span class="appearance-switch" aria-hidden="true"></span></button>
+            <div class="night-settings" role="group" aria-label="Additional appearance options">
+              <button id="night-mode-toggle" type="button" aria-pressed="false" aria-label="Night mode: Off"><span>Night mode</span><span class="appearance-switch" aria-hidden="true"></span></button>
+            </div>
+          </div>
+          <div class="music-control">
+            <button id="music-toggle" type="button" aria-pressed="false" aria-label="Background music: Off"><span>Music</span><span class="appearance-switch" aria-hidden="true"></span></button>
+            <div class="music-settings" role="group" aria-label="Music controls">
+              <label class="music-volume-setting">
+                <span class="music-volume-row"><span>Volume</span><output id="music-volume-value" for="music-volume">100%</output></span>
+                <input id="music-volume" type="range" min="0" max="100" step="1" value="100">
+              </label>
+              <button id="music-mute-toggle" class="music-mute-toggle" type="button" aria-pressed="false" aria-label="Mute music">Mute</button>
+              <span id="music-status" class="music-status" aria-live="polite"></span>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="night-control">
-        <button id="dark-mode-toggle" type="button" aria-pressed="false" aria-label="Dark mode: Off"><span>Dark mode</span><span class="appearance-switch" aria-hidden="true"></span></button>
-        <div class="night-settings" role="group" aria-label="Additional appearance options">
-          <button id="night-mode-toggle" type="button" aria-pressed="false" aria-label="Night mode: Off"><span>Night mode</span><span class="appearance-switch" aria-hidden="true"></span></button>
-        </div>
-      </div>
-      <div class="music-control">
-        <button id="music-toggle" type="button" aria-pressed="false" aria-label="Background music: Off"><span>Music</span><span class="appearance-switch" aria-hidden="true"></span></button>
-        <div class="music-settings" role="group" aria-label="Music controls">
-          <label class="music-volume-setting">
-            <span class="music-volume-row"><span>Volume</span><output id="music-volume-value" for="music-volume">100%</output></span>
-            <input id="music-volume" type="range" min="0" max="100" step="1" value="100">
-          </label>
-          <button id="music-mute-toggle" class="music-mute-toggle" type="button" aria-pressed="false" aria-label="Mute music">Mute</button>
-          <span id="music-status" class="music-status" aria-live="polite"></span>
-        </div>
-      </div>
       </div>
     </details>
   </header>
   <script src="site.js"></script>
-  <div class="bg-wrapper">
+
+  <div class="bg-wrapper" aria-hidden="true">
     <picture>
       <source media="(max-width: 768px)" srcset="background-mobile.webp">
       <source media="(max-width: 1024px)" srcset="background-tablet.webp">
@@ -72,16 +82,19 @@
     </picture>
   </div>
 
-  <div class="panel">
-    <div class="wrap">
-      <h1>About Webexe</h1>
+  <main id="main-content" class="panel">
+    <div class="page-shell wrap">
+      <header class="page-header page-hero head">
+        <h1>About Webexe</h1>
+      </header>
 
-      <div class="text">
+      <section class="content-copy text" aria-labelledby="about-intro">
+        <h2 id="about-intro">Who we are</h2>
         <p>Webexe is a digital company built around a simple idea: technology should make life a little easier and open the door to new possibilities.</p>
         <p>We bring together thoughtful design, practical technology, and a curiosity for what comes next to create useful online experiences.</p>
-      </div>
+      </section>
 
-      <div class="stack text">
+      <div class="stack content-copy text">
         <section>
           <h2>Our mission</h2>
           <p>We make digital tools and information more welcoming and accessible, helping people take their next step with confidence.</p>
@@ -96,6 +109,17 @@
         </section>
       </div>
     </div>
-  </div>
+  </main>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Webexe",
+      "description": "Webexe creates digital experiences that make technology more approachable, useful, and accessible for modern communities.",
+      "logo": "logo.png"
+    }
+  </script>
 </body>
 </html>
+

@@ -55,14 +55,22 @@ if (appearanceControls) {
 
   const introAudio = new Audio();
   const loopAudio = new Audio();
-  loadAudioSource(introAudio, 'sound/intro.ogg');
-  loadAudioSource(loopAudio, 'sound/loop.ogg');
+  let musicSourcesReady = false;
+  function prepareMusicSources() {
+    if (musicSourcesReady) {
+      return;
+    }
+
+    loadAudioSource(introAudio, 'sound/intro.ogg');
+    loadAudioSource(loopAudio, 'sound/loop.ogg');
+    musicSourcesReady = true;
+  }
   let musicEnabled = false;
   let musicRequest = 0;
   let musicPlaybackBlocked = false;
   let introTransitionStarted = false;
   let introPauseTimer = null;
-  const loopTransitionLeadTime = 0.4;
+  const loopTransitionLeadTime = 0.3;
   const loopOverlapDuration = 0.2;
   introAudio.preload = 'auto';
   loopAudio.preload = 'auto';
@@ -92,8 +100,16 @@ if (appearanceControls) {
   bubbleRateControl.setAttribute('aria-valuetext', `${bubbleSpawnRate.toFixed(1)} bubbles per second`);
   bubbleSpeedValue.value = `${bubbleSpeed}%`;
   bubbleRateValue.value = `${bubbleSpawnRate.toFixed(1)}/s`;
-  const musicVolume = getPreferenceNumber(preferences.musicVolume, 0, 100, 100) / 100;
+  const musicVolume = getPreferenceNumber(preferences.musicVolume, 0, 100, 50) / 100;
   let musicMuted = preferences.musicMuted === true;
+
+  function applyMusicVolume(volumePercent = Number(musicVolumeControl.value) || 0) {
+    const normalizedVolume = Math.min(100, Math.max(0, Number(volumePercent) || 0)) / 100;
+    [introAudio, loopAudio].forEach((audio) => {
+      audio.volume = normalizedVolume;
+    });
+  }
+
   musicVolumeControl.value = String(Math.round(musicVolume * 100));
   musicVolumeControl.setAttribute('aria-valuetext', `${musicVolumeControl.value}%`);
   musicVolumeValue.value = `${musicVolumeControl.value}%`;
@@ -150,14 +166,25 @@ if (appearanceControls) {
 
   async function playTrack(audio, phase, startTime = 0, request = musicRequest) {
     try {
+      if (audio.readyState === 0) {
+        await new Promise((resolve, reject) => {
+          const onMetadata = () => {
+            audio.removeEventListener('loadedmetadata', onMetadata);
+            audio.removeEventListener('error', onError);
+            resolve();
+          };
+          const onError = () => {
+            audio.removeEventListener('loadedmetadata', onMetadata);
+            audio.removeEventListener('error', onError);
+            reject(new Error('Audio metadata failed to load.'));
+          };
+          audio.addEventListener('loadedmetadata', onMetadata, { once: true });
+          audio.addEventListener('error', onError, { once: true });
+          audio.load();
+        });
+      }
+
       if (startTime > 0) {
-        if (audio.readyState === 0) {
-          await new Promise((resolve, reject) => {
-            audio.addEventListener('loadedmetadata', resolve, { once: true });
-            audio.addEventListener('error', () => reject(new Error('Audio metadata failed to load.')), { once: true });
-            audio.load();
-          });
-        }
         audio.currentTime = Math.min(startTime, audio.duration || startTime);
       }
 
@@ -188,6 +215,7 @@ if (appearanceControls) {
   }
 
   function resumeMusic() {
+    prepareMusicSources();
     let musicSession = {};
     try {
       musicSession = {
@@ -209,6 +237,7 @@ if (appearanceControls) {
   }
 
   function startMusic() {
+    prepareMusicSources();
     musicRequest += 1;
     const request = musicRequest;
     musicEnabled = true;
@@ -392,6 +421,7 @@ if (appearanceControls) {
   musicToggle.setAttribute('aria-pressed', String(musicEnabled));
   musicToggle.setAttribute('aria-label', `Background music: ${musicEnabled ? 'On' : 'Off'}`);
   if (musicEnabled) {
+    prepareMusicSources();
     let musicSession = {};
     try {
       musicSession = {
@@ -479,9 +509,7 @@ if (appearanceControls) {
     const label = `${volume}%`;
     musicVolumeControl.setAttribute('aria-valuetext', label);
     musicVolumeValue.value = label;
-    [introAudio, loopAudio].forEach((audio) => {
-      audio.volume = volume / 100;
-    });
+    applyMusicVolume(volume);
     preferences.musicVolume = volume;
     savePreferences();
   });
